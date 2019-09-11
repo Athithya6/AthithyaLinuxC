@@ -1,22 +1,23 @@
 #include<stdio.h>
-#define MAXSIZE=201
-int a;
-int queue[MAXSIZE],front=-1,rear=-1;
+#define MAXSIZE 201
+int queue[MAXSIZE];
+int front=-1,rear=-1;
+
 
 void enqueue(int n)
 {
- if(rear==a-1)
+if(rear==MAXSIZE-1)
  {
   printf("\nQueue is full");
+  return;
+ }
  else
  {
-  if(front==-1)
-  {
    front=0;
    queue[++rear]=n;
    printf("Value inserted=%d",n);
   }
- }
+ 
 }
 
 void dequeue()
@@ -32,7 +33,7 @@ void dequeue()
  }
  if(front>rear)
  {
-  front=rear=-1
+  front=rear=-1;
  }
 }
  
@@ -45,7 +46,7 @@ void print()
  }
  else
  {
- for(int i=0;i<=rear;i++)
+ for(int i=front;i<=rear;i++)
  {
   printf("\n%d",queue[i]);
  }
@@ -55,11 +56,9 @@ void print()
 int main()
 {
  int b,c;
- printf("Enter the size of the queue:\n");
- scanf("%d",&a);
  do
  {
- printf("QUEUE OPERATIONS USING ARRAY:\n");
+ printf("\nQUEUE OPERATIONS USING ARRAY(MAX SIZE=200):\n");
  printf("\n1.Enqueue-enter an element \n2.Dequeue-delete an element \n3.Display the queue \n4.Quit");
  printf("\nEnter your choice:\n");
  scanf("%d",&b);
@@ -75,10 +74,12 @@ int main()
   case 2:
   {
    dequeue();
+   break;
   }
   case 3:
   {
    print();
+   break;
   }
   case 4:
   {
@@ -87,6 +88,7 @@ int main()
   default:
   {
    printf("Enter a valid option from 1 to 4:\n");
+  }
   }
   }while(b!=4);
   return 0;
