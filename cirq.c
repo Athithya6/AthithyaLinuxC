@@ -1,10 +1,10 @@
 #include<stdio.h>
-#define SIZE 10
+#define SIZE 5
 int cirq[SIZE],front=-1,rear=-1;
 int n;
 int enqueue(n)
 {
- if(((rear==SIZE-1)&&front==0)||(rear==front-1))
+ if(((rear==SIZE-1)&&front==0)||(front==rear+1))
  {
   printf("\nQueue is full");
   return;
